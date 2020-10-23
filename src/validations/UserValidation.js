@@ -2,11 +2,11 @@ const UserValidation = (values) => {
   const errors = {};
 
   if (!values.firstName || values.firstName === "") {
-    errors.firstName = "Nama depan harus diisi";
+    errors.firstName = "Nama depan Harus diisi";
   }
 
   if (!values.lastName || values.lastName === "") {
-    errors.lastName = "Nama Belakang harus diisi";
+    errors.lastName = "Nama belakang Harus diisi";
   }
 
   if (!values.age || values.age === "") {

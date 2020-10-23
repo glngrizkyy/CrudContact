@@ -25,7 +25,7 @@ class CreateUserContainer extends Component {
       } else {
         swal(
           "User Created!",
-          "Nama : " +
+          "Nama Depan : " +
             this.props.getResponDataUser.firstName +
             " , Umur : " +
             this.props.getResponDataUser.age,

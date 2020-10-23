@@ -29,10 +29,10 @@ class EditUserContainer extends Component {
       } else {
         swal(
           "User Updated!",
-          "Nama : " +
-            this.props.getResponDataUser.nama +
+          "Nama Depan : " +
+            this.props.getResponDataUser.firstName +
             " , Umur : " +
-            this.props.getResponDataUser.umur,
+            this.props.getResponDataUser.age,
           "success"
         );
       }

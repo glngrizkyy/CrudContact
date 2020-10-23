@@ -37,10 +37,9 @@ const renderField = ({
 const mapStateToProps = (state) => {
   return {
     initialValues: {
-      nama: state.users.getUserDetail.nama,
-      nohp: state.users.getUserDetail.nohp,
-      alamat: state.users.getUserDetail.alamat,
-      umur: state.users.getUserDetail.umur,
+      firstName: state.users.getUserDetail.firstName,
+      lastName: state.users.getUserDetail.lastName,
+      age: state.users.getUserDetail.age,
     },
   };
 };
@@ -56,7 +55,7 @@ class FormComponent extends Component {
                 type="text"
                 name="firstName"
                 component={renderField}
-                label="firstName :"
+                label="first Name :"
               />
             </FormGroup>
           </Col>
@@ -67,7 +66,7 @@ class FormComponent extends Component {
                 type="text"
                 name="lastName"
                 component={renderField}
-                label="lastName :"
+                label="last Name :"
               />
             </FormGroup>
           </Col>
@@ -78,18 +77,7 @@ class FormComponent extends Component {
                 type="text"
                 name="age"
                 component={renderField}
-                label="age :"
-              />
-            </FormGroup>
-          </Col>
-
-          <Col md={6}>
-            <FormGroup>
-              <Field
-                type="photo"
-                name="photo"
-                component={renderField}
-                label="photo :"
+                label="Age :"
               />
             </FormGroup>
           </Col>

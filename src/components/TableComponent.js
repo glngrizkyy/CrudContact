@@ -3,10 +3,10 @@ import BootstrapTable from "react-bootstrap-table-next";
 import { Container, Button, Row, Col, Spinner } from "reactstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
-  faInfo,
-  faEdit,
-  faTrash,
-  faUserPlus,
+  faTrashAlt,
+  faPlusCircle,
+  faPenAlt,
+  faInfoCircle,
 } from "@fortawesome/free-solid-svg-icons";
 import ToolkitProvider, { Search } from "react-bootstrap-table2-toolkit";
 import paginationFactory from "react-bootstrap-table2-paginator";
@@ -34,6 +34,13 @@ const handleClick = (dispatch, id) => {
     }
   });
 };
+
+const defaultSorted = [
+  {
+    dataField: "id",
+    order: "asc",
+  },
+];
 
 const mapStateToProps = (state) => {
   return {
@@ -74,27 +81,28 @@ const TableComponent = (props) => {
     {
       dataField: "link",
       text: "Action",
-      formatter: (row) => {
+      formatter: (rowContent, row) => {
         return (
           <div>
             <Link to={"detail/" + row.id}>
-              <Button color="dark" className="mr-2">
-                <FontAwesomeIcon icon={faInfo} /> Detail
+              <Button color="link" className="mr-2">
+                <FontAwesomeIcon icon={faInfoCircle} /> Detail
               </Button>
             </Link>
 
             <Link to={"edit/" + row.id}>
-              <Button color="dark" className="mr-2">
-                <FontAwesomeIcon icon={faEdit} /> Edit
+              <Button color="link" className="mr-2">
+                <FontAwesomeIcon icon={faPenAlt} /> Edit
               </Button>
             </Link>
 
             <Button
-              color="dark"
+              width="100px"
+              color="link"
               className="mr-2"
               onClick={() => handleClick(props.dispatch, row.id)}
             >
-              <FontAwesomeIcon icon={faTrash} /> Delete
+              <FontAwesomeIcon icon={faTrashAlt} /> Del
             </Button>
           </div>
         );
@@ -110,20 +118,25 @@ const TableComponent = (props) => {
           keyField="id"
           data={props.getUsersList}
           columns={columns}
+          defaultSorted={defaultSorted}
+          search
         >
           {(props) => (
             <div>
               <Row>
                 <Col>
                   <Link to="/create">
-                    <Button color="dark" className="mr-2">
-                      <FontAwesomeIcon icon={faUserPlus} /> Create User
+                    <Button color="link" className="mr-2">
+                      <FontAwesomeIcon icon={faPlusCircle} /> Create User
                     </Button>
                   </Link>
                 </Col>
                 <Col>
                   <div className="float-right">
-                    <SearchBar {...props.searchProps} placeholder="Search .." />
+                    <SearchBar
+                      {...props.searchProps}
+                      placeholder="Search User"
+                    />
                   </div>
                 </Col>
               </Row>
@@ -140,7 +153,7 @@ const TableComponent = (props) => {
           {props.errorUsersList ? (
             <h4>{props.errorUsersList}</h4>
           ) : (
-            <Spinner color="dark" />
+            <Spinner color="primary" />
           )}
         </div>
       )}
